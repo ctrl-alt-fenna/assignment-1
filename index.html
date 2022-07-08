@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+
+<body>
+    <header>
+        <h1>Komputer Store</h1>
+    </header>
+
+    <main>
+        <div class="grid grid-1">
+            <h1>Bank</h1>
+            <p>Balance: <span id="bal">0</span> EUR</p>
+            <p id="out-loan">Outstanding: <span id="loan-bal">0</span> EUR</p>
+            <button href="#" id="loan" name="loan">Take out loan</button>
+        </div>
+        <div class="grid grid-2">
+            <h1>Work</h1>
+            <p>Pay: <span id="pay">0</span> EUR</p>
+            <button href="#" id="work-bank">Bank</button>
+            <button href="#" id="work-pay">Work</button>
+            <button href="#" id="pay-loan">Pay back loan</button>
+        </div>
+        <div class="grid grid-3" id="lap">
+            <h1>Laptops</h1>
+            <select id="laptops">
+            </select>
+            <h2>Features:</h2>
+            <ul id="lap-spec">
+            </ul>
+            <!-- <p id="lap-price"></p> -->
+        </div>
+    </main>
+    <article class="grid">
+        <div id="lap-main" class="grid grid-1">
+            <img id="lap-img" src="">
+            <h1 id="lap-title"></h1>
+            <p id="lap-desc">
+            </p>
+        </div>
+        <div id="lap-buy" class="grid grid-2">
+            <h2 id="lap-price"><span id="price"></span> EUR</h2>
+            <button id="buy">Buy now!</button>
+        </div>
+    </article>
+    <script src="app.js"></script>
+</body>
+
+</html>
