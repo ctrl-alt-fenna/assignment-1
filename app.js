@@ -28,39 +28,50 @@ let hasLoan = false
 outLoan.style.visibility = 'hidden'
 payLoanBtn.style.visibility = 'hidden'
 
-parseLaptops();
 
 loanBtn.onclick = () => {
-    // First check if there is already a loan out
+    // Check if there is already a loan outstanding
     if (hasLoan) alert('ERROR: Only one loan per client allowed')
     else {
         let ans = prompt('How much do you wish to loan?')
         updateLoan(Number(ans));
     }
 }
+
+// Interaction with bankBtn sends current pay to the bank and reduces any outstanding loan with 10% of pay
 bankBtn.onclick = () => {
     currPay = Number(pay.innerHTML)
     transferMoney(currPay)
     currPay = 0
     pay.innerHTML = 0
 }
+
+// Interaction with workBtn adds salary (100 euro) to current pay
 workBtn.onclick = () => {
     currPay += salary
     pay.innerHTML = currPay
 }
+
+// Interaction with payLoanBtn reduces the loan by full current pay amount. 
 payLoanBtn.onclick = () => {
     currPay = Number(pay.innerHTML);
     updateLoan(currPay);
     pay.innerHTML = 0;
     currPay = 0;
 }
+
+// Interaction with selMenu changes currently shown laptop specifications to match the selected option
 selMenu.onchange = (e) => {
-    changeSpecs(e.target.value - 1)
-}
+        changeSpecs(e.target.value - 1)
+    }
+    // Interaction with buyBtn checks if user can buy laptop and then removes it from stock if they can 
 buyBtn.onclick = () => {
     buyLaptop()
 }
 
+parseLaptops();
+
+// A function that gets the object of laptops by http request
 function parseLaptops() {
     var xhttp = new XMLHttpRequest();
     let laptopItems;
@@ -74,6 +85,7 @@ function parseLaptops() {
     xhttp.send()
 }
 
+// Function that adds all laptops from the GET request to the select menu
 function createOptions(laptopItems) {
     for (const iterator of laptopItems) {
         let optNode = document.createElement('option')
@@ -85,6 +97,7 @@ function createOptions(laptopItems) {
     changeSpecs()
 }
 
+// Function that updates the currently shown laptop and specification
 function changeSpecs(id = currID) {
     lapSpec.textContent = ' '
     let currLaptop = laptopCollection[id]
@@ -104,6 +117,7 @@ function changeSpecs(id = currID) {
     currID = id
 }
 
+// Function that updates the loan by a given amount
 function updateLoan(amount) {
     if (hasLoan) {
         currLoan = Number(loanBal.innerHTML)
@@ -127,19 +141,19 @@ function updateLoan(amount) {
     else {
         hasLoan = true
         currLoan = Number(amount)
-        console.log(currLoan)
         loanBal.innerHTML = currLoan
         payLoanBtn.style.visibility = 'visible'
         outLoan.style.visibility = 'visible'
         updateBalance(amount)
     }
 }
-
+// Function that updates the balance by a given amount
 function updateBalance(amount) {
     currBalance = Number(balance.innerHTML) + Number(amount)
     balance.innerHTML = currBalance
 }
 
+// Function that transfers money to bank by the given amount.
 function transferMoney(amount) {
     // If the user currently has an outstanding loan, reduce paycheck by 10% and reduce loan by this amount
     if (hasLoan) {
@@ -150,7 +164,7 @@ function transferMoney(amount) {
     pay.innerHTML = 0
 }
 
-
+// Function that checks if user can buy laptop with current balance and stock
 function buyLaptop() {
     if (Number(stockCount.innerHTML) == 0) alert('Laptop already sold!')
     else if (laptopCollection[currID].price > Number(balance.innerHTML)) alert('Insufficient funds')
