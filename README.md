@@ -11,6 +11,6 @@ A mock website for a computer store named Komputer. The user can
 * buy and select laptops
 
 ## Authors and acknowledgment
-Javascript, HTML and CSS by Fenna Ransijn
-Favicon taken from [Creazilla](https://creazilla.com/nodes/57642-desktop-computer-emoji-clipart)
+Javascript, HTML and CSS by Fenna Ransijn<br>
+Favicon taken from [Creazilla](https://creazilla.com/nodes/57642-desktop-computer-emoji-clipart)<br>
 Special thanks to the Noroff team for the wireframe used for inspiration and guidance
