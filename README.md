@@ -1,6 +1,6 @@
 # Assignment 1 - Fenna Ransijn
 
-# Version 1.0
+# Version 1.0.5
 
 A mock website for a computer store named Komputer. The user can
 * work, earning 100 euro in their paycheck
@@ -11,4 +11,6 @@ A mock website for a computer store named Komputer. The user can
 * buy and select laptops
 
 ## Authors and acknowledgment
-Javascript, HTML and CSS by Fenna Ransijn, wireframe used for inspiration was provided in the assignment
+Javascript, HTML and CSS by Fenna Ransijn
+Favicon taken from [Creazilla](https://creazilla.com/nodes/57642-desktop-computer-emoji-clipart)
+Special thanks to the Noroff team for the wireframe used for inspiration and guidance
