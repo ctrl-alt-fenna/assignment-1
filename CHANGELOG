@@ -15,3 +15,6 @@ Version 1.0.2
 - Made CSS more uniform
 Version 1.0.3
 - Updated README with correct licensing, credits and acknowledgments
+- Updated the way stock changes, so it remains the same even after different laptop selections
+- Changed variable names to be more descriptive
+- Added comments to describe functions
