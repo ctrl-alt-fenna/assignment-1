@@ -1,0 +1,17 @@
+Version 1.0
+- Added basic HTML structure
+- Added custom id-names and classes for specific sections 
+- Created custom CSS for tags, classes and ids
+- Added basic Javascript logic for work-, bank- and loan-functionality
+- Added favicon
+- README update
+Version 1.0.1
+- Added HTML GET request to retrieve laptop API
+- Added Javascript logic for buying laptops
+- Added Javascript logic for selecting, changing and displaying laptop information
+Version 1.0.2
+- Added comments to explain Javascript code
+- Changed HTML text from Komputer to iPear
+- Made CSS more uniform
+Version 1.0.3
+- Updated README with correct licensing, credits and acknowledgments
