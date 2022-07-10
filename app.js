@@ -1,6 +1,6 @@
 let laptopCollection = [];
 const salary = 100
-const URL = 'https://noroff-komputer-store-api.herokuapp.com/'
+const baseURL = 'https://noroff-komputer-store-api.herokuapp.com/'
 
 const workBtn = document.getElementById('work-pay')
 const bankBtn = document.getElementById('work-bank')
@@ -61,10 +61,12 @@ payLoanBtn.onclick = () => {
 }
 
 // Interaction with selMenu changes currently shown laptop specifications to match the selected option
-selMenu.onchange = (e) => {
-        changeSpecs(e.target.value - 1)
+selMenu.onchange = (laptopSelection) => {
+        changeSpecs(laptopSelection.target.value - 1)
     }
-    // Interaction with buyBtn checks if user can buy laptop and then removes it from stock if they can 
+    /* Interaction with buyBtn checks if user can buy laptop and then removes it from stock if they can
+        The price of the laptop is then removed from the bankaccount.
+    */
 buyBtn.onclick = () => {
     buyLaptop()
 }
@@ -81,29 +83,30 @@ function parseLaptops() {
             createOptions(laptopItems)
         }
     }
-    xhttp.open('GET', URL + "computers")
+    xhttp.open('GET', baseURL + "computers")
     xhttp.send()
 }
 
 // Function that adds all laptops from the GET request to the select menu
 function createOptions(laptopItems) {
-    for (const iterator of laptopItems) {
+    for (const laptop of laptopItems) {
         let optNode = document.createElement('option')
-        optNode.value = iterator.id;
-        optNode.text = iterator.title;
+        optNode.value = laptop.id;
+        optNode.text = laptop.title;
         selMenu.appendChild(optNode)
-        laptopCollection.push(iterator);
+        laptopCollection.push(laptop);
     }
     changeSpecs()
 }
 
 // Function that updates the currently shown laptop and specification
+
 function changeSpecs(id = currID) {
     lapSpec.textContent = ' '
     let currLaptop = laptopCollection[id]
-    currLaptop.specs.map((e) => {
+    currLaptop.specs.map((laptopSpecs) => {
         let textItem = document.createElement('li')
-        textItem.textContent = e
+        textItem.textContent = laptopSpecs
         lapSpec.appendChild(textItem)
     })
     let lapTitle = document.getElementById('lap-title')
@@ -113,7 +116,7 @@ function changeSpecs(id = currID) {
     lapTitle.textContent = currLaptop.title
     lapDesc.textContent = currLaptop.description;
     stockCount.innerHTML = currLaptop.stock;
-    lapImg.src = URL + currLaptop.image
+    lapImg.src = baseURL + currLaptop.image
     currID = id
 }
 
