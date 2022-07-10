@@ -1,67 +1,113 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 html,
 body,
-footer {
-    font-family: 'Montserrat', sans-serif;
+main,
+article {
+    font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
-    padding: 0;
     border: 0;
     outline: 0;
     vertical-align: baseline;
+    background-color: #f5f5f7;
+    box-sizing: border-box;
 }
 
 header {
+    box-sizing: border-box;
     text-align: center;
-    background-color: black;
-    padding: .25em;
+    background-color: #0d060f;
+    padding: .5em;
     color: white;
+    width: 100%;
 }
 
 main {
+    box-sizing: border-box;
     margin: auto;
-    padding: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 2fr;
     text-align: center;
 }
 
 article {
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin: auto;
 }
 
-.grid {
+select {
+    padding: 0.25em;
+    margin: 1em;
     text-align: center;
-    padding: 1em;
-    margin: 0.5em 1em;
-    background-color: ghostwhite;
-    border-radius: 10px;
 }
 
 button {
     display: grid;
     width: 50%;
     font-weight: bold;
-    background-color: #7fffd4;
+    background-color: black;
+    color: white;
     padding: 1em;
     margin: auto;
     margin-top: 1em;
     border: none;
     cursor: pointer;
+    border-radius: 25px;
 }
 
 button:hover {
-    background-color: #4eeed3;
     text-decoration: underline;
 }
 
-#lap-main img {
-    display: inline;
+button#buy {
+    background-color: #f4a261;
+}
+
+.grid {
+    box-sizing: border-box;
+    text-align: center;
+    padding: 1em;
+    margin: 0.5em;
+}
+
+.grid.main {
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 2px 5px 5px #ddd;
+}
+
+#lap-img {
+    display: block;
     float: left;
-    width: 25%;
+    width: 35%;
 }
 
 #lap-spec {
-    list-style: none;
+    list-style-type: "\1F4c4";
     text-align: left;
+}
+
+#lap-spec li {
+    margin: .25em;
+}
+
+#brand-title,
+#title,
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+#sub-title {
+    margin: 0;
+    color: #777;
+    font-size: 18px;
+}
+
+#brand-subtitle {
+    margin: 0;
+    color: white;
+    font-style: italic;
 }

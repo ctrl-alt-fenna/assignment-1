@@ -18,3 +18,8 @@ Version 1.0.3
 - Updated the way stock changes, so it remains the same even after different laptop selections
 - Changed variable names to be more descriptive
 - Added comments to describe functions
+Version 1.0.4
+- Updated styling
+- Added new colours
+- Added new font
+- Changed some title texts

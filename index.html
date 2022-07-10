@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>iPear Store</title>
+    <title>Komputer</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,32 +14,35 @@
 
 <body>
     <header>
-        <h1>iPear Store</h1>
-        <p>THE place to buy your NEW computer!</p>
+        <h1 id="brand-title">Komputer</h1>
+        <p id="brand-subtitle">Finance, work and shop: all in one</p>
     </header>
 
     <main>
-        <div class="grid grid-1">
-            <h1>Bank</h1>
+        <div class="grid grid-1 main">
+            <h1 id="title">Bank</h1>
+            <h2 id="sub-title">Secure and quick</h2>
             <p>Balance: <span id="bal">0</span> EUR</p>
             <p id="out-loan">Outstanding: <span id="loan-bal">0</span> EUR</p>
             <button href="#" id="loan" name="loan">Take out loan</button>
         </div>
-        <div class="grid grid-2">
-            <h1>Work</h1>
+        <div class="grid grid-2 main">
+            <h1 id="title">Work</h1>
+            <h2 id="sub-title">Working was never easier</h2>
             <p>Pay: <span id="pay">0</span> EUR</p>
             <button href="#" id="work-bank">Bank</button>
             <button href="#" id="work-pay">Work</button>
             <button href="#" id="pay-loan">Pay back loan</button>
         </div>
-        <div class="grid grid-3" id="lap">
-            <h1>Laptops</h1>
+        <div class="grid grid-3 main" id="lap">
+            <h1 id="title">Laptops</h1>
+            <h2 id="sub-title">Used and new</h2>
             <select id="laptops"></select>
             <h2>Features:</h2>
             <ul id="lap-spec"></ul>
         </div>
     </main>
-    <article class="grid">
+    <article class="grid main">
         <div id="lap-main" class="grid grid-1">
             <img id="lap-img" src="">
             <h1 id="lap-title"></h1>

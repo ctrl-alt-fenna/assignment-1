@@ -1,6 +1,6 @@
 # Assignment 1 - Fenna Ransijn
 
-# Version 1.0.3
+# Version 1.0.4
 
 A mock website for a computer store named Komputer. The user can
 * work, earning 100 euro in their paycheck
