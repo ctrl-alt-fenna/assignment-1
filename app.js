@@ -46,7 +46,7 @@ bankBtn.onclick = () => {
     pay.innerHTML = 0
 }
 
-// Interaction with workBtn adds salary (100 euro) to current pay
+// Interaction with workBtn adds salary amount to current pay
 workBtn.onclick = () => {
     currPay += salary
     pay.innerHTML = currPay
@@ -62,18 +62,21 @@ payLoanBtn.onclick = () => {
 
 // Interaction with selMenu changes currently shown laptop specifications to match the selected option
 selMenu.onchange = (laptopSelection) => {
-        changeSpecs(laptopSelection.target.value - 1)
-    }
-    /* Interaction with buyBtn checks if user can buy laptop and then removes it from stock if they can
-        The price of the laptop is then removed from the bankaccount.
-    */
+    changeSpecs(laptopSelection.target.value - 1)
+}
+
+// Interaction with buyBtn checks if user can buy laptop and then removes it from stock if they can
 buyBtn.onclick = () => {
     buyLaptop()
 }
 
 parseLaptops();
 
-// A function that gets the object of laptops by http request
+/* 
+    A function that gets the object of laptops from the API by http request
+    INPUT: Nothing
+    OUTPUT: A JSON object of Laptops as retrieved from the API
+*/
 function parseLaptops() {
     var xhttp = new XMLHttpRequest();
     let laptopItems;
@@ -87,7 +90,11 @@ function parseLaptops() {
     xhttp.send()
 }
 
-// Function that adds all laptops from the GET request to the select menu
+/*  
+    Function that adds all laptops from the GET request to the select menu
+    INPUT: Object of laptopItems retrieved from the API
+    OUTPUT: A selection menu with all the laptops of the API as a select-option
+*/
 function createOptions(laptopItems) {
     for (const laptop of laptopItems) {
         let optNode = document.createElement('option')
@@ -99,8 +106,11 @@ function createOptions(laptopItems) {
     changeSpecs()
 }
 
-// Function that updates the currently shown laptop and specification
-
+/*  
+    Function that updates the currently shown laptop and specification
+    INPUT: A Laptop ID, or a default of the current ID set when selection was made
+    OUTPUT: Changes to the laptop specification section in index.html
+*/
 function changeSpecs(id = currID) {
     lapSpec.textContent = ' '
     let currLaptop = laptopCollection[id]
@@ -120,7 +130,11 @@ function changeSpecs(id = currID) {
     currID = id
 }
 
-// Function that updates the loan by a given amount
+/*  
+    Function that updates the loan by a given amount
+    INPUT: Loan amount to be loaned or payed back
+    OUTPUT: Changes to HTML elements to match the change in loan
+*/
 function updateLoan(amount) {
     if (hasLoan) {
         currLoan = Number(loanBal.innerHTML)
@@ -150,13 +164,21 @@ function updateLoan(amount) {
         updateBalance(amount)
     }
 }
-// Function that updates the balance by a given amount
+/*
+    Function that updates the balance by a given amount
+    INPUT: Amount to be added to balance
+    OUTPUT: Updating of the visible balance
+*/
 function updateBalance(amount) {
     currBalance = Number(balance.innerHTML) + Number(amount)
     balance.innerHTML = currBalance
 }
 
-// Function that transfers money to bank by the given amount.
+/*
+    Function that transfers money to bank by the given amount.
+    INPUT: Amount to be transferred:
+    OUTPUT: Update of the bank balance and reduction of any outstanding loan 
+*/
 function transferMoney(amount) {
     // If the user currently has an outstanding loan, reduce paycheck by 10% and reduce loan by this amount
     if (hasLoan) {
@@ -167,7 +189,11 @@ function transferMoney(amount) {
     pay.innerHTML = 0
 }
 
-// Function that checks if user can buy laptop with current balance and stock
+/*
+    Function that checks if user can buy laptop with current balance and stock. If so, the balance and stock are reduced
+    INPUT: Nothing
+    OUTPUT: Laptop removed from stock, update of current balance
+*/
 function buyLaptop() {
     if (Number(stockCount.innerHTML) == 0) alert('Laptop already sold!')
     else if (laptopCollection[currID].price > Number(balance.innerHTML)) alert('Insufficient funds')
@@ -176,5 +202,6 @@ function buyLaptop() {
         currBalance = Number(balance.innerHTML) - laptopCollection[currID].price;
         balance.innerHTML = currBalance
         stockCount.innerHTML = Number(stockCount.innerHTML) - 1
+        laptopCollection[currID].stock = Number(stockCount.innerHTML)
     }
 }
