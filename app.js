@@ -122,11 +122,21 @@ function changeSpecs(id = currID) {
     let lapTitle = document.getElementById('lap-title')
     let lapImg = document.getElementById('lap-img')
     let lapPrice = document.getElementById('price')
-    lapPrice.textContent = currLaptop.price;
+    lapPrice.textContent = currLaptop.price
     lapTitle.textContent = currLaptop.title
-    lapDesc.textContent = currLaptop.description;
-    stockCount.innerHTML = currLaptop.stock;
-    lapImg.src = baseURL + currLaptop.image
+    lapDesc.textContent = currLaptop.description
+    stockCount.innerHTML = currLaptop.stock
+        // Check if link is valid
+    let xhttp = new XMLHttpRequest()
+    xhttp.onload = () => {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            lapImg.src = baseURL + currLaptop.image
+        } else {
+            lapImg.src = baseURL + (currLaptop.image).replaceAll('jpg', 'png')
+        }
+    }
+    xhttp.open('GET', baseURL + currLaptop.image);
+    xhttp.send()
     currID = id
 }
 
